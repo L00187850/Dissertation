@@ -1,0 +1,1 @@
+docker exec -u 0 -it jenkins-server bash -c "apt-get update && apt-get install -y python3-pip jq python3-venv && pip3 install --no-cache-dir --break-system-packages --ignore-installed packaging checkov && ln -s /usr/local/bin/checkov /usr/bin/checkov"

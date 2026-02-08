@@ -1,0 +1,1 @@
+docker exec -u 0 -it jenkins-server su - jenkins -s /bin/bash -c "checkov --version"
