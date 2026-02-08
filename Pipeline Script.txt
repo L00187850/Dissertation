@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    parameters {
+        text(
+            name: 'IAC_CODE',
+            defaultValue: '', 
+            description: 'Terraform IaC code to scan'
+        )
+    }
+
+    stages {
+        stage('Cleanup') {
+            steps {
+                deleteDir()
+            }
+        }
+
+        stage('Prepare Files') {
+            steps {
+                script {
+                    // Writing the file
+                    writeFile file: 'Parameters.tf', text: params.IAC_CODE
+                    sh 'chmod 644 Parameters.tf'
+                }
+            }
+        }
+
+        stage('Security & Compliance Scan') {
+            steps {
+                script {
+                    // We remove --check ISO27001 to run ALL checks
+                    // We add --download-external-modules false to speed it up
+                    sh 'checkov --file Parameters.tf --framework terraform --output json --output-file-path .'
+                }
+            }
+        }
+
+        stage('Display Summary') {
+            steps {
+                script {
+                    // Checkov generates results_json.json. 
+                    // Let's print the actual summary block.
+                    sh 'jq ".summary" results_json.json'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'results_json.json', allowEmptyArchive: true
+        }
+    }
+}
