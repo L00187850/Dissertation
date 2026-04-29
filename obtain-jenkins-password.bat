@@ -1,1 +1,1 @@
-docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+docker exec jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword
