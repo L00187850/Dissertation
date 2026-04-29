@@ -22,6 +22,8 @@ This repository contains the Infrastructure as Code (IaC) and CI/CD pipelines fo
 
 &nbsp;- "verify checkov functionality.bat" = This command verifies if checkov is installed before proceeding.
 
+&nbsp;- "obtain-jenkins-password.bat" This command gets the initial admin password for jenkins within docker.
+
 &nbsp;- "Remediation Loop Logs.zip" = Text files displaying logs obtained per Jenkins build. Each log displays the progress from the previous iteration.
 
 
