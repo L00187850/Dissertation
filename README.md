@@ -27,4 +27,5 @@ This repository contains the Infrastructure as Code (IaC) and CI/CD pipelines fo
 &nbsp;- "Remediation Loop Logs.zip" = Text files displaying logs obtained per Jenkins build. Each log displays the progress from the previous iteration.
 
 
+This repo also contains the physical references associated with the Dissertation from Philip Stewart - L00187850, to save the examiner from having to access each link separately should they wish.
 
