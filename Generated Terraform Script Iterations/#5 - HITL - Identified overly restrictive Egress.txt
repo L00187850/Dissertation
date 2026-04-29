@@ -8,8 +8,6 @@ terraform {
     }
   }
 
-  # Production: configure S3 backend + DynamoDB locking via -backend-config.
-  backend "s3" {}
 }
 
 provider "aws" {
